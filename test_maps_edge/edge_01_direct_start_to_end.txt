@@ -1,0 +1,7 @@
+# Edge case 01: Conexion directa de start_hub a end_hub sin zonas intermedias
+# Varios drones deben poder cruzar directamente a la meta
+# for f in test_maps_edge/*.txt; do echo "=== $f ==="; python3 main.py "$f"; echo "Exit: $?"; echo; done
+nb_drones: 4
+start_hub: start 0 0
+end_hub: goal 10 0
+connection: start-goal

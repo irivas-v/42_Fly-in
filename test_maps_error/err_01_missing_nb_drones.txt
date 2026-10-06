@@ -1,0 +1,6 @@
+# Error: Falta la directiva obligatoria nb_drones al inicio del archivo
+start_hub: start 0 0
+hub: mid 5 5
+end_hub: goal 10 10
+connection: start-mid
+connection: mid-goal

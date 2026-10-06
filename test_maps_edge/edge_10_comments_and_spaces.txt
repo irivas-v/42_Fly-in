@@ -1,0 +1,25 @@
+# Edge case 10: Comentarios extensos, lineas vacias repetidas y espacios variados
+# ==============================================================================
+# Cabecera de prueba de robustez de parsing
+# ==============================================================================
+
+    # Comentario indentado con espacios previos
+
+nb_drones: 3
+
+# Zonas con multiples metadatos separados por espacios arbitrarios
+start_hub:   base_alpha    10    20    [ color=red   zone=normal ]
+
+hub:   waypoint_mid   30   40   [ max_drones=2   zone=normal   color=cyan ]
+
+end_hub:   base_omega   50   60   [ color=green ]
+
+# Conexiones con espaciados y comentarios finales
+connection:   base_alpha-waypoint_mid   [ max_link_capacity=2 ]   # Enlace de alta capacidad
+
+connection:   waypoint_mid-base_omega
+
+# Fin del archivo con saltos de linea
+
+
+

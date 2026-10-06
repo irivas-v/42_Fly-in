@@ -1,0 +1,7 @@
+# Edge case 05: Zonas restringidas (restricted) que tardan 2 turnos en completarse
+nb_drones: 2
+start_hub: start 0 0
+hub: r_zone 3 0 [zone=restricted]
+end_hub: goal 6 0
+connection: start-r_zone
+connection: r_zone-goal

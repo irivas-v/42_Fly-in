@@ -1,0 +1,7 @@
+# Caso 3: Capacidades muy altas
+nb_drones: 5
+start_hub: start 0 0 [color=green]
+hub: autopista 1 0 [max_drones=1000 color=blue]
+end_hub: goal 2 0 [color=red]
+connection: start-autopista [max_link_capacity=500]
+connection: autopista-goal [max_link_capacity=500]

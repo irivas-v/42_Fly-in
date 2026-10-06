@@ -1,0 +1,8 @@
+# Error: Nombre de zona duplicado ('mid' aparece dos veces)
+nb_drones: 2
+start_hub: start 0 0
+hub: mid 5 5
+hub: mid 6 6
+end_hub: goal 10 10
+connection: start-mid
+connection: mid-goal

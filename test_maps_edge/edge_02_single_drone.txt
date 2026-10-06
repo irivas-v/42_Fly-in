@@ -1,0 +1,10 @@
+# Edge case 02: Un unico dron
+# Comprueba el caso base minimo de navegacion sin concurrencia
+nb_drones: 1
+start_hub: start 0 0
+hub: w1 2 0
+hub: w2 4 0
+end_hub: goal 6 0
+connection: start-w1
+connection: w1-w2
+connection: w2-goal
