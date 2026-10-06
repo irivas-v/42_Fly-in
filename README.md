@@ -1,6 +1,6 @@
 ### *This project has been created as part of the 42 curriculum by irivas-v.*
 
-# 🚁 Fly-in
+# Fly-in
 
 <p align="center">
   <img src="assets/pipeline_architecture.svg" width="750">
@@ -12,7 +12,7 @@
 
 ---
 
-# 📖 Description
+# Description
 
 **Fly-in** is an autonomous drone delivery and airspace deconfliction simulator developed in Python.
 
@@ -32,23 +32,23 @@ The project combines:
 
 ---
 
-# ✨ Features
+# Features
 
-✅ **Custom Graph Engine:** Built from scratch without forbidden libraries (`networkx`, `graphlib`, `scipy`).  
-✅ **Multi-Path Routing:** Bounded DFS and Dijkstra exploration to balance drone flow across parallel corridors.  
-✅ **Strict Capacity Enforcement:** Nodal capacity (`max_drones`) and corridor bandwidth (`max_link_capacity`).  
-✅ **Pipelined Turn Mechanics:** Immediate space vacancy allows incoming drones to enter in the same turn.  
-✅ **Multi-Cost zone navigation:** Native support for normal, priority, restricted (2 turns), and blocked zones.  
-✅ **Anti-Deadlock System:** Automatic stall detection (`STALL_THRESHOLD = 3`) and route re-assignment.  
-✅ **ANSI Terminal Replay:** Color-coded playback reflecting map metadata (`color=...`) and active positions.  
-✅ **Live Capacity Monitoring:** Section 13 live coding feature (`--capacity-info`) tracking per-turn usage.  
-✅ **Performance Benchmarks:** Matches or outperforms target turns across all mandatory maps (Easy, Medium, Hard).  
-✅ **Comprehensive Test Suites:** 22 automated test maps covering syntax errors, broken topologies, and edge cases.  
-✅ **Strict Code Standards:** Zero warnings with `flake8` and `mypy src --strict`.
+**Custom Graph Engine:** Built from scratch without forbidden libraries (`networkx`, `graphlib`, `scipy`).  
+**Multi-Path Routing:** Bounded DFS and Dijkstra exploration to balance drone flow across parallel corridors.  
+**Strict Capacity Enforcement:** Nodal capacity (`max_drones`) and corridor bandwidth (`max_link_capacity`).  
+**Pipelined Turn Mechanics:** Immediate space vacancy allows incoming drones to enter in the same turn.  
+**Multi-Cost zone navigation:** Native support for normal, priority, restricted (2 turns), and blocked zones.  
+**Anti-Deadlock System:** Automatic stall detection (`STALL_THRESHOLD = 3`) and route re-assignment.  
+**ANSI Terminal Replay:** Color-coded playback reflecting map metadata (`color=...`) and active positions.  
+**Live Capacity Monitoring:** Section 13 live coding feature (`--capacity-info`) tracking per-turn usage.  
+**Performance Benchmarks:** Matches or outperforms target turns across all mandatory maps (Easy, Medium, Hard).  
+**Comprehensive Test Suites:** 22 automated test maps covering syntax errors, broken topologies, and edge cases.  
+**Strict Code Standards:** Zero warnings with `flake8` and `mypy src --strict`.
 
 ---
 
-# ⚙️ Instructions
+# Instructions
 
 ## Installation
 
@@ -121,7 +121,7 @@ make run MAP=maps/01_linear_path.txt ARGS="--visual --capacity-info"
 
 ---
 
-# 🗺 Explaining the Concepts
+# Explaining the Concepts
 
 The simulator operates on custom map files defining hubs and bidirectional connections:
 
@@ -157,7 +157,7 @@ connection: danger_zone-destination
 
 ---
 
-# 🧠 Algorithm Strategy
+# Algorithm Strategy
 
 The routing system solves multi-agent drone delivery without collisions or gridlocks:
 
@@ -188,7 +188,7 @@ Each discrete turn evaluates and applies state transitions atomically:
 
 ---
 
-# 🛰 Drone Movement Rules
+# Drone Movement Rules
 
 - All drones start at the `start_hub` and must reach the `end_hub`.
 - Drones may move simultaneously as long as zone and link capacities are respected.
@@ -199,7 +199,7 @@ Each discrete turn evaluates and applies state transitions atomically:
 
 ---
 
-# 🎨 Visual Representation & Live Capacity Info
+# Visual Representation & Live Capacity Info
 
 <p align="center">
   <img src="assets/terminal_output.png" width="750">
@@ -226,7 +226,7 @@ Zone goal: 2/inf drones, Connection goal-waypoint2: 1/1 capacity used
 
 ---
 
-# 📋 Example Input & Expected Output
+# Example Input & Expected Output
 
 ### Input Map (`maps/01_linear_path.txt`)
 ```text
@@ -256,7 +256,7 @@ D2-goal
 
 ---
 
-# 📊 Performance Benchmarks
+# Performance Benchmarks
 
 Below is the verified performance benchmark comparison across all 10 official maps in the [`maps/`](maps) directory against the reference targets established in the Subject (§VII.7) and Evaluation Sheet (§10 & §14). A checkmark (✅) indicates that the map is solved in fewer than or equal turns to the subject target, while a cross (❌) indicates that it exceeded the target:
 
@@ -277,7 +277,7 @@ Below is the verified performance benchmark comparison across all 10 official ma
 
 ---
 
-# 🧪 Error Handling & Edge Cases
+# Error Handling & Edge Cases
 
 The parser ([`src/map_parser.py`](src/map_parser.py)) validates map grammar, coordinates, and network topology, outputting clear error messages on `sys.stderr` and exiting with code `2`:
 
@@ -287,23 +287,20 @@ The parser ([`src/map_parser.py`](src/map_parser.py)) validates map grammar, coo
 
 ---
 
-# 📂 Project Structure
+# Project Structure
 
 ```text
 .
 ├── Makefile                     # Build automation (install, run, debug, test-all, lint, clean)
-├── .flake8                      # Flake8 style configuration (PEP 8 standard)
 ├── README.md                    # Main project documentation
-├── ARCHITECTURE.md              # Global architectural guide and evaluation review
-├── PARSER_GRAPH.md              # Line-by-line documentation of parser and graph
-├── simulator.md                 # Line-by-line documentation of simulator and turn engine
-├── visual.md                    # Line-by-line documentation of visualizer
+├── documentation/
+│    ├── 01_Parser-Graph.md       # Parser and graph exhaustive documentation
+│    ├── 02_Simulator.md          # Drone, _TurnPlan, Simulator engine explanation
+│    └── 03_Visual.md             # Visualizer replay engine with ANSI styles explanation
 ├── maps/                        # 10 official benchmark maps
 ├── test_maps_edge/              # 10 edge-case test maps
 ├── test_maps_error/             # 12 validation error test maps
-├── assets/                      # Diagrams and terminal screenshots
 └── src/
-    ├── __init__.py              # Python package marker
     ├── main.py                  # CLI entry point, argument parsing, error dispatching
     ├── map_parser.py            # MapData, Zone, Connection models and FlyInParser
     ├── graph.py                 # Custom Graph, Dijkstra, BFS, DFS multi-path
@@ -313,7 +310,7 @@ The parser ([`src/map_parser.py`](src/map_parser.py)) validates map grammar, coo
 
 ---
 
-# 📚 Additional Documentation
+# Additional Documentation
 
 Detailed, line-by-line technical documentation is available directly in the repository root:
 
