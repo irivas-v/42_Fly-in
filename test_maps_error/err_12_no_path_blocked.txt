@@ -1,0 +1,7 @@
+# Error: No existe camino navegable hasta end_hub (el unico nodo intermedio es tipo blocked)
+nb_drones: 2
+start_hub: start 0 0
+hub: wall 5 5 [zone=blocked]
+end_hub: goal 5 5
+connection: start-wall
+connection: wall-goal

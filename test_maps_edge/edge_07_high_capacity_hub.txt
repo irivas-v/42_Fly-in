@@ -1,0 +1,8 @@
+# Edge case 07: Zona intermedia con alta capacidad (max_drones=3)
+# Hasta 3 drones pueden coincidir simultaneamente en la zona central 'plaza'
+nb_drones: 3
+start_hub: start 0 0
+hub: plaza 5 0 [max_drones=3]
+end_hub: goal 10 0
+connection: start-plaza [max_link_capacity=3]
+connection: plaza-goal [max_link_capacity=3]

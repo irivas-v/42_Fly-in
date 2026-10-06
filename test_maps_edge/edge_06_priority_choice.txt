@@ -1,0 +1,12 @@
+# Edge case 06: Preferencia de zonas prioritarias (priority)
+# Existen dos caminos de la misma longitud: ruta_norm vs ruta_prio
+# El algoritmo debe priorizar la ruta que contiene la zona priority
+nb_drones: 2
+start_hub: start 0 0
+hub: norm_way 3 2 [zone=normal]
+hub: prio_way 3 -2 [zone=priority]
+end_hub: goal 6 0
+connection: start-norm_way
+connection: norm_way-goal
+connection: start-prio_way
+connection: prio_way-goal

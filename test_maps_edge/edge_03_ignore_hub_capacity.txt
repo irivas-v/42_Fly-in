@@ -1,0 +1,12 @@
+# Edge case 03: start_hub y end_hub contienen max_drones=1
+# Segun la especificacion del subject (Capitulo VI.2), este metadato debe ignorarse
+# y permitir que los 4 drones inicien y finalicen sin restricciones de capacidad
+nb_drones: 4
+start_hub: start 0 0 [max_drones=1]
+hub: p1 2 2
+hub: p2 2 -2
+end_hub: goal 4 0 [max_drones=1]
+connection: start-p1
+connection: start-p2
+connection: p1-goal
+connection: p2-goal

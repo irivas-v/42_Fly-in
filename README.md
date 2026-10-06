@@ -1,6 +1,10 @@
 ### *This project has been created as part of the 42 curriculum by irivas-v.*
 
+<<<<<<< HEAD
 # Fly-in
+=======
+# 🚁 Fly-in
+>>>>>>> main
 
 <p align="center">
   <img src="assets/pipeline_architecture.svg" width="750">
@@ -12,7 +16,11 @@
 
 ---
 
+<<<<<<< HEAD
 # Description
+=======
+# 📖 Description
+>>>>>>> main
 
 **Fly-in** is an autonomous drone delivery and airspace deconfliction simulator developed in Python.
 
@@ -32,6 +40,7 @@ The project combines:
 
 ---
 
+<<<<<<< HEAD
 # Features
 
 **Custom Graph Engine:** Built from scratch without forbidden libraries (`networkx`, `graphlib`, `scipy`).  
@@ -49,6 +58,25 @@ The project combines:
 ---
 
 # Instructions
+=======
+# ✨ Features
+
+✅ **Custom Graph Engine:** Built from scratch without forbidden libraries (`networkx`, `graphlib`, `scipy`).  
+✅ **Multi-Path Routing:** Bounded DFS and Dijkstra exploration to balance drone flow across parallel corridors.  
+✅ **Strict Capacity Enforcement:** Nodal capacity (`max_drones`) and corridor bandwidth (`max_link_capacity`).  
+✅ **Pipelined Turn Mechanics:** Immediate space vacancy allows incoming drones to enter in the same turn.  
+✅ **Multi-Cost zone navigation:** Native support for normal, priority, restricted (2 turns), and blocked zones.  
+✅ **Anti-Deadlock System:** Automatic stall detection (`STALL_THRESHOLD = 3`) and route re-assignment.  
+✅ **ANSI Terminal Replay:** Color-coded playback reflecting map metadata (`color=...`) and active positions.  
+✅ **Live Capacity Monitoring:** Section 13 live coding feature (`--capacity-info`) tracking per-turn usage.  
+✅ **Performance Benchmarks:** Matches or outperforms target turns across all mandatory maps (Easy, Medium, Hard).  
+✅ **Comprehensive Test Suites:** 22 automated test maps covering syntax errors, broken topologies, and edge cases.  
+✅ **Strict Code Standards:** Zero warnings with `flake8` and `mypy src --strict`.
+
+---
+
+# ⚙️ Instructions
+>>>>>>> main
 
 ## Installation
 
@@ -121,7 +149,11 @@ make run MAP=maps/01_linear_path.txt ARGS="--visual --capacity-info"
 
 ---
 
+<<<<<<< HEAD
 # Explaining the Concepts
+=======
+# 🗺 Explaining the Concepts
+>>>>>>> main
 
 The simulator operates on custom map files defining hubs and bidirectional connections:
 
@@ -157,7 +189,11 @@ connection: danger_zone-destination
 
 ---
 
+<<<<<<< HEAD
 # Algorithm Strategy
+=======
+# 🧠 Algorithm Strategy
+>>>>>>> main
 
 The routing system solves multi-agent drone delivery without collisions or gridlocks:
 
@@ -188,7 +224,11 @@ Each discrete turn evaluates and applies state transitions atomically:
 
 ---
 
+<<<<<<< HEAD
 # Drone Movement Rules
+=======
+# 🛰 Drone Movement Rules
+>>>>>>> main
 
 - All drones start at the `start_hub` and must reach the `end_hub`.
 - Drones may move simultaneously as long as zone and link capacities are respected.
@@ -199,7 +239,11 @@ Each discrete turn evaluates and applies state transitions atomically:
 
 ---
 
+<<<<<<< HEAD
 # Visual Representation & Live Capacity Info
+=======
+# 🎨 Visual Representation & Live Capacity Info
+>>>>>>> main
 
 <p align="center">
   <img src="assets/terminal_output.png" width="750">
@@ -226,7 +270,11 @@ Zone goal: 2/inf drones, Connection goal-waypoint2: 1/1 capacity used
 
 ---
 
+<<<<<<< HEAD
 # Example Input & Expected Output
+=======
+# 📋 Example Input & Expected Output
+>>>>>>> main
 
 ### Input Map (`maps/01_linear_path.txt`)
 ```text

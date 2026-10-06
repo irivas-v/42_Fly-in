@@ -1,0 +1,19 @@
+# Edge case 08: Grafo con callejones sin salida (dead ends) y ciclos alternativos
+# Los drones no deben entrar en callejones sin salida ni quedar atrapados en bucles
+nb_drones: 3
+start_hub: start 0 0
+hub: fork 2 0
+hub: dead_end1 2 5
+hub: dead_end2 2 10
+hub: main_path 5 0
+hub: loop_a 5 3
+hub: loop_b 7 3
+end_hub: goal 8 0
+connection: start-fork
+connection: fork-dead_end1
+connection: dead_end1-dead_end2
+connection: fork-main_path
+connection: main_path-loop_a
+connection: loop_a-loop_b
+connection: loop_b-main_path
+connection: main_path-goal

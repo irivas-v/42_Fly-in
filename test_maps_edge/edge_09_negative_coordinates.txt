@@ -1,0 +1,10 @@
+# Edge case 09: Coordenadas negativas y valores grandes
+# Las coordenadas pueden ser enteros negativos sin provocar fallos en el parser
+nb_drones: 2
+start_hub: start -500 -1000 [color=blue]
+hub: transit_zero 0 0 [color=yellow]
+hub: transit_far 5000 10000 [color=magenta]
+end_hub: goal 9999 9999 [color=green]
+connection: start-transit_zero
+connection: transit_zero-transit_far
+connection: transit_far-goal

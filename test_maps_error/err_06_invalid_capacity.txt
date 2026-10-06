@@ -1,0 +1,7 @@
+# Error: Capacidad max_drones no positiva (max_drones=0)
+nb_drones: 2
+start_hub: start 0 0
+hub: mid 5 5 [max_drones=-5]
+end_hub: goal 10 10
+connection: start-mid
+connection: mid-goal
