@@ -172,7 +172,9 @@ Rather than computing a single shortest route that would cause bottleneck conges
 - **Dijkstra with Priority Queue (`heapq`)**: Computes optimal weighted paths considering zone heuristics.
 - **Bounded DFS (`find_all_paths`)**: Generates up to $K = \min(2N, 50)$ candidate paths sorted by ascending cost.
 - **Round-Robin Scheduling**: Drones are distributed across alternative paths:
-  $$\text{drone}[i].\text{route\_index} = i \pmod{|\text{routes}|}$$
+  - Dron 0 (`D1`) route assigned `0 % len = 0`.
+   - Dron 1 (`D2`) route assigned `1 % len = 1`.
+   - Dron 2 (`D3`) route assigned `2 % len = 0`.
 
 ### 3. Atomic Two-Pass Turn Lifecycle (`_run_turn`)
 
@@ -181,7 +183,7 @@ Each discrete turn evaluates and applies state transitions atomically:
 1. **Anti-Deadlock Stall Detection (`STALL_THRESHOLD = 3`)**: Drones stuck in place for 3 consecutive turns are dynamically assigned alternative candidate routes.
 2. **Pass 1A: Mandatory Forced Arrivals**: Drones finishing their second turn towards a restricted zone have their landing spot reserved first, as transit drones cannot hover or delay.
 3. **Pass 1B: Free Movement Planning**: Drones ready to depart verify:
-   $$\text{effective\_occupancy}(Z) = \text{current}(Z) - \text{leaving}(Z) + \text{reserved}(Z) < \text{max\_drones}(Z)$$
+
    This ensures **pipelining**: vacating drones immediately free space for incoming drones. Link capacity is verified via canonical undirected connection keys.
 4. **Pass 2: State Commit**: All confirmed drones update positions simultaneously and emit movement tokens.
 
