@@ -1,26 +1,14 @@
-### *This project has been created as part of the 42 curriculum by irivas-v.*
-
-<<<<<<< HEAD
 # Fly-in
-=======
-# 🚁 Fly-in
->>>>>>> main
 
-<p align="center">
-  <img src="assets/pipeline_architecture.svg" width="750">
-</p>
+*This project has been created as part of the 42 curriculum by irivas-v.*
 
-<p align="center">
-  <i>Autonomous drone fleet routing, discrete turn-based simulation, and ANSI terminal visualization.</i>
-</p>
+![Pipeline architecture](assets/pipeline_architecture.svg)
+
+*Autonomous drone fleet routing, discrete turn-based simulation, and ANSI terminal visualization.*
 
 ---
 
-<<<<<<< HEAD
-# Description
-=======
-# 📖 Description
->>>>>>> main
+## Description
 
 **Fly-in** is an autonomous drone delivery and airspace deconfliction simulator developed in Python.
 
@@ -40,8 +28,7 @@ The project combines:
 
 ---
 
-<<<<<<< HEAD
-# Features
+## Features
 
 **Custom Graph Engine:** Built from scratch without forbidden libraries (`networkx`, `graphlib`, `scipy`).  
 **Multi-Path Routing:** Bounded DFS and Dijkstra exploration to balance drone flow across parallel corridors.  
@@ -57,26 +44,7 @@ The project combines:
 
 ---
 
-# Instructions
-=======
-# ✨ Features
-
-✅ **Custom Graph Engine:** Built from scratch without forbidden libraries (`networkx`, `graphlib`, `scipy`).  
-✅ **Multi-Path Routing:** Bounded DFS and Dijkstra exploration to balance drone flow across parallel corridors.  
-✅ **Strict Capacity Enforcement:** Nodal capacity (`max_drones`) and corridor bandwidth (`max_link_capacity`).  
-✅ **Pipelined Turn Mechanics:** Immediate space vacancy allows incoming drones to enter in the same turn.  
-✅ **Multi-Cost zone navigation:** Native support for normal, priority, restricted (2 turns), and blocked zones.  
-✅ **Anti-Deadlock System:** Automatic stall detection (`STALL_THRESHOLD = 3`) and route re-assignment.  
-✅ **ANSI Terminal Replay:** Color-coded playback reflecting map metadata (`color=...`) and active positions.  
-✅ **Live Capacity Monitoring:** Section 13 live coding feature (`--capacity-info`) tracking per-turn usage.  
-✅ **Performance Benchmarks:** Matches or outperforms target turns across all mandatory maps (Easy, Medium, Hard).  
-✅ **Comprehensive Test Suites:** 22 automated test maps covering syntax errors, broken topologies, and edge cases.  
-✅ **Strict Code Standards:** Zero warnings with `flake8` and `mypy src --strict`.
-
----
-
-# ⚙️ Instructions
->>>>>>> main
+## Instructions
 
 ## Installation
 
@@ -149,11 +117,7 @@ make run MAP=maps/01_linear_path.txt ARGS="--visual --capacity-info"
 
 ---
 
-<<<<<<< HEAD
-# Explaining the Concepts
-=======
-# 🗺 Explaining the Concepts
->>>>>>> main
+## Explaining the Concepts
 
 The simulator operates on custom map files defining hubs and bidirectional connections:
 
@@ -189,32 +153,31 @@ connection: danger_zone-destination
 
 ---
 
-<<<<<<< HEAD
-# Algorithm Strategy
-=======
-# 🧠 Algorithm Strategy
->>>>>>> main
+## Algorithm Strategy
 
 The routing system solves multi-agent drone delivery without collisions or gridlocks:
 
-<p align="center">
-  <img src="assets/turn_lifecycle.svg" width="750">
-</p>
+![Turn lifecycle](assets/turn_lifecycle.svg)
 
 ### 1. Custom Graph Architecture (No External Libraries)
+
 The network is modeled in [`src/graph.py`](src/graph.py) using native adjacency lists:
 $$\text{adj}: \text{Dict}[\text{str}, \text{List}[\text{Connection}]]$$
 Every connection is bidirectional and symmetric, sharing connection bandwidth across forward and reverse directions.
 
 ### 2. Multi-Path Discovery & Round-Robin Allocation
+
 Rather than computing a single shortest route that would cause bottleneck congestion, the engine uses:
+
 - **Dijkstra with Priority Queue (`heapq`)**: Computes optimal weighted paths considering zone heuristics.
 - **Bounded DFS (`find_all_paths`)**: Generates up to $K = \min(2N, 50)$ candidate paths sorted by ascending cost.
 - **Round-Robin Scheduling**: Drones are distributed across alternative paths:
   $$\text{drone}[i].\text{route\_index} = i \pmod{|\text{routes}|}$$
 
 ### 3. Atomic Two-Pass Turn Lifecycle (`_run_turn`)
+
 Each discrete turn evaluates and applies state transitions atomically:
+
 1. **Anti-Deadlock Stall Detection (`STALL_THRESHOLD = 3`)**: Drones stuck in place for 3 consecutive turns are dynamically assigned alternative candidate routes.
 2. **Pass 1A: Mandatory Forced Arrivals**: Drones finishing their second turn towards a restricted zone have their landing spot reserved first, as transit drones cannot hover or delay.
 3. **Pass 1B: Free Movement Planning**: Drones ready to depart verify:
@@ -224,11 +187,7 @@ Each discrete turn evaluates and applies state transitions atomically:
 
 ---
 
-<<<<<<< HEAD
-# Drone Movement Rules
-=======
-# 🛰 Drone Movement Rules
->>>>>>> main
+## Drone Movement Rules
 
 - All drones start at the `start_hub` and must reach the `end_hub`.
 - Drones may move simultaneously as long as zone and link capacities are respected.
@@ -239,22 +198,18 @@ Each discrete turn evaluates and applies state transitions atomically:
 
 ---
 
-<<<<<<< HEAD
-# Visual Representation & Live Capacity Info
-=======
-# 🎨 Visual Representation & Live Capacity Info
->>>>>>> main
+## Visual Representation & Live Capacity Info
 
-<p align="center">
-  <img src="assets/terminal_output.png" width="750">
-</p>
+![Terminal output screenshot](assets/terminal_output.png)
 
 ## Terminal Visualizer ([`src/visual.py`](src/visual.py))
+
 - Implemented using a decoupled **Replay Pattern**: parses output tokens without polluting the core simulation math.
 - Dynamically translates zone color tags (`color=green`, `color=red`, `color=blue`, etc.) into ANSI escape sequences.
 - Displays occupied zones, stationary drones, and transit connections turn by turn.
 
 ## Live Capacity Info (`--capacity-info`)
+
 Built to fulfill Section 13 of the Peer Evaluation Scale, printing real-time resource utilization:
 
 ```text
@@ -270,13 +225,10 @@ Zone goal: 2/inf drones, Connection goal-waypoint2: 1/1 capacity used
 
 ---
 
-<<<<<<< HEAD
-# Example Input & Expected Output
-=======
-# 📋 Example Input & Expected Output
->>>>>>> main
+## Example Input & Expected Output
 
 ### Input Map (`maps/01_linear_path.txt`)
+
 ```text
 nb_drones: 2
 start_hub: start 0 0
@@ -289,6 +241,7 @@ connection: waypoint2-goal
 ```
 
 ### Standard Output (Format: `D<ID>-<zone>`)
+
 ```text
 D1-waypoint1
 D1-waypoint2 D2-waypoint1
@@ -296,7 +249,8 @@ D1-goal D2-waypoint2
 D2-goal
 ```
 
-### Turn-by-Turn Trace:
+### Turn-by-Turn Trace
+
 - **Turn 1**: Drone `D1` advances to `waypoint1`. `D2` waits at `start` due to `waypoint1` capacity limit of 1.
 - **Turn 2**: `D1` moves to `waypoint2`, vacating `waypoint1`. `D2` immediately enters `waypoint1` (pipelined release).
 - **Turn 3**: `D1` delivers to `goal`. `D2` advances to `waypoint2`.
@@ -304,7 +258,7 @@ D2-goal
 
 ---
 
-# Performance Benchmarks
+## Performance Benchmarks
 
 Below is the verified performance benchmark comparison across all 10 official maps in the [`maps/`](maps) directory against the reference targets established in the Subject (§VII.7) and Evaluation Sheet (§10 & §14). A checkmark (✅) indicates that the map is solved in fewer than or equal turns to the subject target, while a cross (❌) indicates that it exceeded the target:
 
@@ -325,17 +279,18 @@ Below is the verified performance benchmark comparison across all 10 official ma
 
 ---
 
-# Error Handling & Edge Cases
+## Error Handling & Edge Cases
 
 The parser ([`src/map_parser.py`](src/map_parser.py)) validates map grammar, coordinates, and network topology, outputting clear error messages on `sys.stderr` and exiting with code `2`:
 
-### Test Suites Included:
+### Test Suites Included
+
 - **`test_maps_error/` (12 error tests)**: Missing drone count, negative/zero drones, missing `start_hub`/`end_hub`, unknown zone types, zero capacities, duplicate zone names, duplicate connections, disconnected graphs, and blocked-severed paths.
 - **`test_maps_edge/` (10 edge-case tests)**: Direct start-to-goal paths, single drone scenarios, hub capacity exemption handling, multi-lane links, restricted flight, negative coordinates, and comment/whitespace tolerance.
 
 ---
 
-# Project Structure
+## Project Structure
 
 ```text
 .
@@ -358,7 +313,7 @@ The parser ([`src/map_parser.py`](src/map_parser.py)) validates map grammar, coo
 
 ---
 
-# Additional Documentation
+## Additional Documentation
 
 Detailed, line-by-line technical documentation is available directly in the repository root:
 
@@ -368,37 +323,39 @@ Detailed, line-by-line technical documentation is available directly in the repo
 
 ---
 
-# 📖 Resources
+## Resources
 
 ### Pathfinding & Graph Algorithms
+
 - **Dijkstra's Algorithm Guide**:  
-  https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
+  <https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/>
 - **Breadth-First Search (BFS)**:  
-  https://en.wikipedia.org/wiki/Breadth-first_search
+  <https://en.wikipedia.org/wiki/Breadth-first_search>
 - **Depth-First Search (DFS)**:  
-  https://en.wikipedia.org/wiki/Depth-first_search
+  <https://en.wikipedia.org/wiki/Depth-first_search>
 - **Multi-Agent Pathfinding (MAPF)**:  
-  https://en.wikipedia.org/wiki/Multi-agent_pathfinding
+  <https://en.wikipedia.org/wiki/Multi-agent_pathfinding>
 - **Network Flow and Capacity Constraints**:  
-  https://en.wikipedia.org/wiki/Maximum_flow_problem
+  <https://en.wikipedia.org/wiki/Maximum_flow_problem>
 
 ### Python Standard Library & Typing
+
 - **Python `heapq` (Priority Queue Implementation)**:  
-  https://docs.python.org/3/library/heapq.html
+  <https://docs.python.org/3/library/heapq.html>
 - **Python `dataclasses` Module**:  
-  https://docs.python.org/3/library/dataclasses.html
+  <https://docs.python.org/3/library/dataclasses.html>
 - **Python `argparse` Tutorial**:  
-  https://docs.python.org/3/library/argparse.html
+  <https://docs.python.org/3/library/argparse.html>
 - **Mypy Static Type Checking Documentation**:  
-  https://mypy.readthedocs.io/
+  <https://mypy.readthedocs.io/>
 - **PEP 8 – Style Guide for Python Code**:  
-  https://peps.python.org/pep-0008/
+  <https://peps.python.org/pep-0008/>
 - **PEP 257 – Docstring Conventions**:  
-  https://peps.python.org/pep-0257/
+  <https://peps.python.org/pep-0257/>
 
 ---
 
-# 🤖 AI Usage
+## AI Usage
 
 In compliance with the **42 Curriculum AI Guidelines** (Chapter II):
 
@@ -411,7 +368,7 @@ AI tools were consulted as learning and architectural assistants during developm
 
 ---
 
-# 🚀 Conclusion
+## Conclusion
 
 **Fly-in** combines custom graph modeling, multi-agent collision avoidance, discrete turn simulation, and clear visual terminal replay into a complete drone routing system.
 
