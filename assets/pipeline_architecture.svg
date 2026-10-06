@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 220" width="100%" height="100%" style="background:#1e1e2e; font-family:system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#89b4fa"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="32" fill="#cdd6f4" font-size="18" font-weight="bold" text-anchor="middle">Pipeline de Datos — Fly-in</text>
+
+  <!-- Node: Archivo Mapa -->
+  <rect x="25" y="75" width="125" height="70" rx="8" fill="#313244" stroke="#45475a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="87" y="107" fill="#f5e0dc" font-size="13" font-weight="bold" text-anchor="middle">Archivo .txt</text>
+  <text x="87" y="127" fill="#a6adc8" font-size="11" text-anchor="middle">(Entrada mapa)</text>
+
+  <!-- Line 1 -->
+  <path d="M 150 110 L 180 110" stroke="#89b4fa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node: Parser -->
+  <rect x="185" y="75" width="145" height="70" rx="8" fill="#1e3a5f" stroke="#89b4fa" stroke-width="2" filter="url(#shadow)"/>
+  <text x="257" y="105" fill="#89b4fa" font-size="13" font-weight="bold" text-anchor="middle">1. map_parser.py</text>
+  <text x="257" y="125" fill="#b4befe" font-size="11" text-anchor="middle">Valida y crea MapData</text>
+
+  <!-- Line 2 -->
+  <path d="M 330 110 L 360 110" stroke="#89b4fa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node: Graph -->
+  <rect x="365" y="75" width="140" height="70" rx="8" fill="#2a3d34" stroke="#a6e3a1" stroke-width="2" filter="url(#shadow)"/>
+  <text x="435" y="105" fill="#a6e3a1" font-size="13" font-weight="bold" text-anchor="middle">2. graph.py</text>
+  <text x="435" y="125" fill="#a6e3a1" font-size="11" text-anchor="middle">Adyacencia + Dijkstra</text>
+
+  <!-- Line 3 -->
+  <path d="M 505 110 L 535 110" stroke="#89b4fa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node: Simulator -->
+  <rect x="540" y="75" width="145" height="70" rx="8" fill="#4a3525" stroke="#fab387" stroke-width="2" filter="url(#shadow)"/>
+  <text x="612" y="105" fill="#fab387" font-size="13" font-weight="bold" text-anchor="middle">3. simulator.py</text>
+  <text x="612" y="125" fill="#f9e2af" font-size="11" text-anchor="middle">Motor turno a turno</text>
+
+  <!-- Fork branches -->
+  <path d="M 685 110 L 730 80" stroke="#89b4fa" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 685 110 L 730 140" stroke="#cba6f7" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node: Standard Output -->
+  <rect x="735" y="55" width="185" height="50" rx="8" fill="#313244" stroke="#89b4fa" stroke-width="2" filter="url(#shadow)"/>
+  <text x="827" y="77" fill="#cdd6f4" font-size="12" font-weight="bold" text-anchor="middle">Salida Estándar</text>
+  <text x="827" y="93" fill="#a6adc8" font-size="11" text-anchor="middle">Texto plano (D1-zona...)</text>
+
+  <!-- Node: Visualizer -->
+  <rect x="735" y="120" width="185" height="50" rx="8" fill="#392349" stroke="#cba6f7" stroke-width="2" filter="url(#shadow)"/>
+  <text x="827" y="142" fill="#cba6f7" font-size="12" font-weight="bold" text-anchor="middle">4. visual.py (--visual)</text>
+  <text x="827" y="158" fill="#f5c2e7" font-size="11" text-anchor="middle">Colores ANSI y animación</text>
+</svg>

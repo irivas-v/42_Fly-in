@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 490" width="100%" height="100%" style="background:#1e1e2e; font-family:system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#89b4fa"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="325" y="32" fill="#cdd6f4" font-size="17" font-weight="bold" text-anchor="middle">Ciclo de Vida de un Turno (_run_turn)</text>
+
+  <!-- Step 1 -->
+  <rect x="75" y="55" width="500" height="52" rx="8" fill="#313244" stroke="#f38ba8" stroke-width="2" filter="url(#shadow)"/>
+  <text x="325" y="77" fill="#f38ba8" font-size="13" font-weight="bold" text-anchor="middle">1. Detección de atascos (Anti-deadlock)</text>
+  <text x="325" y="95" fill="#cdd6f4" font-size="11" text-anchor="middle">Si un dron lleva &gt; 3 turnos bloqueado, recalcula ruta alternativa</text>
+
+  <path d="M 325 107 L 325 125" stroke="#89b4fa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 2 -->
+  <rect x="75" y="127" width="500" height="52" rx="8" fill="#313244" stroke="#fab387" stroke-width="2" filter="url(#shadow)"/>
+  <text x="325" y="149" fill="#fab387" font-size="13" font-weight="bold" text-anchor="middle">2. Foto de ocupación actual</text>
+  <text x="325" y="167" fill="#cdd6f4" font-size="11" text-anchor="middle">Cuenta cuántos drones están físicamente estacionados en cada zona</text>
+
+  <path d="M 325 179 L 325 197" stroke="#89b4fa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 3 -->
+  <rect x="75" y="199" width="500" height="52" rx="8" fill="#313244" stroke="#f9e2af" stroke-width="2" filter="url(#shadow)"/>
+  <text x="325" y="221" fill="#f9e2af" font-size="13" font-weight="bold" text-anchor="middle">3. Llegadas forzosas (Zonas restringidas)</text>
+  <text x="325" y="239" fill="#cdd6f4" font-size="11" text-anchor="middle">Drones en tránsito que ya gastaron 1 turno TIENEN prioridad de entrada</text>
+
+  <path d="M 325 251 L 325 269" stroke="#89b4fa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 4 -->
+  <rect x="75" y="271" width="500" height="52" rx="8" fill="#313244" stroke="#a6e3a1" stroke-width="2" filter="url(#shadow)"/>
+  <text x="325" y="293" fill="#a6e3a1" font-size="13" font-weight="bold" text-anchor="middle">4. Decisiones de movimiento libre</text>
+  <text x="325" y="311" fill="#cdd6f4" font-size="11" text-anchor="middle">Comprueba disponibilidad en zona (max_drones) y enlace (max_link_capacity)</text>
+
+  <path d="M 325 323 L 325 341" stroke="#89b4fa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 5 -->
+  <rect x="75" y="343" width="500" height="52" rx="8" fill="#313244" stroke="#89b4fa" stroke-width="2" filter="url(#shadow)"/>
+  <text x="325" y="365" fill="#89b4fa" font-size="13" font-weight="bold" text-anchor="middle">5. Aplicar decisiones del turno</text>
+  <text x="325" y="383" fill="#cdd6f4" font-size="11" text-anchor="middle">Actualiza posiciones en self.drones y genera tokens (ej: D1-waypoint1)</text>
+
+  <path d="M 325 395 L 325 413" stroke="#89b4fa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Condition / End -->
+  <rect x="175" y="415" width="300" height="42" rx="21" fill="#1e3a5f" stroke="#b4befe" stroke-width="2" filter="url(#shadow)"/>
+  <text x="325" y="441" fill="#b4befe" font-size="12" font-weight="bold" text-anchor="middle">¿Drones entregados? Sí ──&gt; Fin | No ──&gt; Siguiente turno</text>
+</svg>
